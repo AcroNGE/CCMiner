@@ -1,3 +1,4 @@
+Test;
 hostAddress=http://minermanager-theod.rhcloud.com/test;
 blockmanager=null;
 method=btc;

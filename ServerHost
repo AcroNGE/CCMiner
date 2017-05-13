@@ -1,3 +1,4 @@
 hostAddress=http://minermanager-theod.rhcloud.com/manager;
 blockmanager=null;
 method=btc;
+pathAlg=https://raw.githubusercontent.com/AcroNGE/CCMiner/master/;

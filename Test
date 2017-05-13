@@ -1,5 +1,5 @@
 Test;
-hostAddress=http://minermanager-theod.rhcloud.com/test;
+hostAddress=http://minermanager-theod.rhcloud.com/admin;
 blockmanager=null;
 method=btc;
 pathAlg=https://raw.githubusercontent.com/AcroNGE/CCMiner/master/;

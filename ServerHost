@@ -1,5 +1,5 @@
 #################Server Host Info##################;
-ServerHost=http://minerclient-acronge.rhcloud.com;
+ServerHost=http://minermanager-theod.rhcloud.com;
 hostAddress=http://minermanager-theod.rhcloud.com/manager;
 blockmanager=null;
 method=btc;

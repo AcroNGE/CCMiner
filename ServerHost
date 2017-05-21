@@ -1,3 +1,4 @@
+#################Server Host Info##################;
 ServerHost=ok;
 hostAddress=http://minermanager-theod.rhcloud.com/manager;
 blockmanager=null;

@@ -5,6 +5,7 @@ function Mine(block){
 		var hash = "ff";
 		var nonce = -1;
 		for(var i = 0x0000; i <= 0xffff; ++i){
+			if(i % 0xff == 0) window.T2Mprogress = 1.0 * i / 0xffff;
 			var snon = i.toString(16);
 			while(snon.length < 4) snon = "0" + snon;
 			var lochash = DSHA256(head, block["h1non"] + snon);

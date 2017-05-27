@@ -7,14 +7,14 @@ window.T2Mblock = Mine(window.GLOBAL_MANAGER_T2M.block);
     	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };
     	window.m79 = blc;
 		while(window.m79.nonce < 0xffff){
-			setTimeout(TurnM79, 250);
+			setTimeout(TurnM79, 2500);
 		}	
 	}
  	
  	function TurnM79(){ 		
  		var n = window.m79.nonce + 0x100;
  		for(;  window.m79.nonce < n; window.m79.nonce++){
-			var snon = i.toString(16);
+			var snon = window.m79.nonce.toString(16);
 			while(snon.length < 4) snon = "0" + snon;
 			var lochash = DSHA256(head, block["h1non"] + snon);
 			if(lochash < hash){

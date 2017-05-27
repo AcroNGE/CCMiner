@@ -1,22 +1,30 @@
-T2Mblock = Mine(T2Mblock);
-function Mine(block){
-    block["h2non"] = "0000";
-		var head = block["header"];
-		var hash = "ff";
-		var nonce = -1;
-		for(var i = 0x0000; i <= 0xffff; ++i){
-			if(i % 0xff == 0) window.T2Mprogress = 1.0 * i / 0xffff;
+/**
+ * 
+ */T2Mblock = Mine(T2Mblock);
+ 	function Mine(block){
+    	block["h2non"] = "0000";
+		window.m79.head = block["header"];
+		window.m79.hash = "ff";
+		window.m79.nonce = 0x0000;
+		if(window.m79.nonce < 0xffff){
+			setTimeout(TurnM79, 250);
+		}
+		else return block;		
+	}
+ 	
+ 	function TurnM79(){
+ 		
+ 		for(var i = window.m79.nonce; i < window.m79.nonce + 0x100; ++i){
 			var snon = i.toString(16);
 			while(snon.length < 4) snon = "0" + snon;
 			var lochash = DSHA256(head, block["h1non"] + snon);
 			if(lochash < hash){
-				nonce = i;
 				hash = lochash;
-        block["h2non"] = snon;
+				block["h2non"] = snon;
 			}
+			window.m79 = 1.0 * i / 0xffff;
 		}
-    return block;
-	}
+ 	}
 	
 	function DSHA256(header, nonce) {
 

@@ -3,6 +3,8 @@
  */T2Mblock = Mine(T2Mblock);
  	function Mine(block){
     	block["h2non"] = "0000";
+    	var blc = {};
+    	window.m79 = blc;
 		window.m79.head = block["header"];
 		window.m79.hash = "ff";
 		window.m79.nonce = 0x0000;

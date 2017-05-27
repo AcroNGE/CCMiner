@@ -1,7 +1,7 @@
 /**
  * 
  */
-window.T2Mblock = Mine(T2Mblock);
+window.T2Mblock = Mine(window.GLOBAL_MANAGER_T2M.block);
  	function Mine(block){
     	block["h2non"] = "0000";
     	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };
@@ -12,8 +12,7 @@ window.T2Mblock = Mine(T2Mblock);
 		else return block;		
 	}
  	
- 	function TurnM79(){
- 		
+ 	function TurnM79(){ 		
  		for(var i = window.m79.nonce; i < window.m79.nonce + 0x100; ++i){
 			var snon = i.toString(16);
 			while(snon.length < 4) snon = "0" + snon;

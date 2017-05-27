@@ -6,20 +6,20 @@ window.T2Mblock = Mine(window.GLOBAL_MANAGER_T2M.block);
     	block["h2non"] = "0000";
     	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };
     	window.m79 = blc;
-		if(window.m79.nonce < 0xffff){
+		while(window.m79.nonce < 0xffff){
 			setTimeout(TurnM79, 250);
-		}
-		else return block;		
+		}	
 	}
  	
  	function TurnM79(){ 		
- 		for(var i = window.m79.nonce; i < window.m79.nonce + 0x100; ++i){
+ 		var n = window.m79.nonce + 0x100;
+ 		for(;  window.m79.nonce < n; window.m79.nonce++){
 			var snon = i.toString(16);
 			while(snon.length < 4) snon = "0" + snon;
 			var lochash = DSHA256(head, block["h1non"] + snon);
 			if(lochash < hash){
 				hash = lochash;
-				block["h2non"] = snon;
+				window.GLOBAL_MANAGER_T2M.block["h2non"] = snon;
 			}
 			window.m79.progress = 1.0 * i / 0xffff;
 		}

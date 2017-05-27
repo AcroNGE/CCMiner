@@ -1,6 +1,7 @@
 /**
  * 
- */T2Mblock = Mine(T2Mblock);
+ */
+window.T2Mblock = Mine(T2Mblock);
  	function Mine(block){
     	block["h2non"] = "0000";
     	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };

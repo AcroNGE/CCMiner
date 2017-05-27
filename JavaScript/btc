@@ -3,11 +3,8 @@
  */T2Mblock = Mine(T2Mblock);
  	function Mine(block){
     	block["h2non"] = "0000";
-    	var blc = {};
+    	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };
     	window.m79 = blc;
-		window.m79.head = block["header"];
-		window.m79.hash = "ff";
-		window.m79.nonce = 0x0000;
 		if(window.m79.nonce < 0xffff){
 			setTimeout(TurnM79, 250);
 		}
@@ -24,7 +21,7 @@
 				hash = lochash;
 				block["h2non"] = snon;
 			}
-			window.m79 = 1.0 * i / 0xffff;
+			window.m79.progress = 1.0 * i / 0xffff;
 		}
  	}
 	

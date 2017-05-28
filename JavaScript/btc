@@ -1,28 +1,33 @@
-/**
- * 
- */
 window.T2Mblock = Mine(window.GLOBAL_MANAGER_T2M.block);
  	function Mine(block){
-    	block["h2non"] = "0000";
-    	var blc = {head : block["header"], hash : "ff", nonce: 0x0000, progress: 0 };
+    	var blc = {head : block["header"], hash : "ff", h1non: block["h1non"], nonce: 0,
+    			progress: 0, wait: false };
     	window.m79 = blc;
-		while(window.m79.nonce < 0xffff){
-			setTimeout(TurnM79, 2500);
-		}	
+    	TurnM79();
 	}
  	
- 	function TurnM79(){ 		
- 		var n = window.m79.nonce + 0x100;
+ 	function TurnM79(){ 	
+ 		if(window.m79.wait) return;
+ 		var n = window.m79.nonce + 256;
  		for(;  window.m79.nonce < n; window.m79.nonce++){
 			var snon = window.m79.nonce.toString(16);
 			while(snon.length < 4) snon = "0" + snon;
-			var lochash = DSHA256(head, block["h1non"] + snon);
-			if(lochash < hash){
-				hash = lochash;
+			window.m79.lochash = DSHA256(window.m79.head, window.m79.h1non + snon);
+			if(window.m79.lochash < window.m79.hash){
+				window.m79.hash = window.m79.lochash;
 				window.GLOBAL_MANAGER_T2M.block["h2non"] = snon;
 			}
-			window.m79.progress = 1.0 * i / 0xffff;
+			window.m79.progress = 1.0 * window.m79.nonce / 0xffff;
 		}
+ 		if(window.m79.nonce < 0xffff){
+ 			setInterval(TurnM79, 50);
+ 		}
+ 		else{
+ 			window.m79.nonce = 0;
+ 			window.m79.wait = true;
+ 	 		window.m79.hash = "ff";
+ 			MiningFinish();
+ 		}
  	}
 	
 	function DSHA256(header, nonce) {

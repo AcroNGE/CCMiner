@@ -1,4 +1,4 @@
-var D35 = new Array(13);
+var D35 = new Array(14);
 result = Mine(result);
 function Mine(block) {
     var init = false;

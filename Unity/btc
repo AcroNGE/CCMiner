@@ -1,11 +1,12 @@
 var D35 = new Array(14);
 result = Mine(result);
 function Mine(block) {
+    D35 = new Array(14);
     var init = false;
     if (block.startsWith("##new#")) {
         block = block.replace("##new#", "");
         init = true;
-        D35[12] = "16";
+        //D35[12] = 16;
     }
     var s1 = block.split("&");
     s1.forEach(foreachBlocks);

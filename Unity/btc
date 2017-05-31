@@ -105,6 +105,14 @@ function Str2Len4(msg) {
     while ((msg.length % 4) > 0) msg = "0" + msg;
 }
 
+function Mov2Right0(m, n) {
+    var msg = m.toString(2);
+    var size = msg.length;
+    for (var i = 0; i < n; ++i) msg = "0" + msg;
+    msg = msg.substring(0, size);
+    return parseInt(msg, 2);
+}
+
 function DSHA256(header, nonce) {
 
     var raw = header + swap(nonce);
@@ -224,7 +232,7 @@ function Sha256hash(msg) {
  * @private
  */
 function Sha256ROTR(n, x) {
-    return (x >>> n) | (x << (32 - n));
+    return Mov2Right0(x, n) | (x << (32 - n));
 }
 
 /**
@@ -238,10 +246,10 @@ function Sha256S1(x) {
     return Sha256ROTR(6, x) ^ Sha256ROTR(11, x) ^ Sha256ROTR(25, x);
 }
 function Sha256Q0(x) {
-    return Sha256ROTR(7, x) ^ Sha256ROTR(18, x) ^ (x >>> 3);
+    return Sha256ROTR(7, x) ^ Sha256ROTR(18, x) ^ Mov2Right0(x, 3);
 }
 function Sha256Q1(x) {
-    return Sha256ROTR(17, x) ^ Sha256ROTR(19, x) ^ (x >>> 10);
+    return Sha256ROTR(17, x) ^ Sha256ROTR(19, x) ^ Mov2Right0(x, 10);
 }
 function Sha256Ch(x, y, z) {
     return (x & y) ^ (~x & z);

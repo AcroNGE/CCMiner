@@ -3,7 +3,7 @@ var D35 = new Array(13);
 function Mine(block) {
     var init = false;
     if (block.startsWith("##new#")) {
-        block.replace("##new#", "");
+        block = block.replace("##new#", "");
         init = true;
         D35[12] = 16;
     }

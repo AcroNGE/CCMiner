@@ -155,7 +155,7 @@ function Sha256hash(msg) {
     // note: most significant word would be (len-1)*8 >>> 32, but since JS converts
     // bitwise-op args to 32 bits, we need to simulate this by arithmetic operators
     var lenHi = ((msg.length - 1) * 8) / Math.pow(2, 32);
-    var lenLo = ((msg.length - 1) * 8) >>> 0;
+    var lenLo = ((msg.length - 1) * 8);
     M[N - 1][14] = Math.floor(lenHi);
     M[N - 1][15] = lenLo;
 

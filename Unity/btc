@@ -5,7 +5,7 @@ function Mine(block) {
     if (block.startsWith("##new#")) {
         block.replace("##new#", "");
         init = true;
-        d35[12] = 16;
+        D35[12] = 16;
     }
     var s1 = block.split("&");
     s1.forEach(foreachBlocks);
@@ -43,6 +43,7 @@ function foreachBlocks(item, index) {
                 break;
             case "nonce":
                 D35[6] = s2[1];
+                break;
             case "cur1hn":
                 D35[7] = s2[1];
                 break;

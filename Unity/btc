@@ -204,7 +204,9 @@ function Sha256hash(msg) {
         H[h] = ("00000000" + H[h].toString(16)).slice(-8);
 
     // concatenate H0..H7, with separator if required
-};
+
+    return H.join('');
+}
 
 /**
  * Rotates right (circular right shift) value x by n positions [§3.2.4].
@@ -212,7 +214,7 @@ function Sha256hash(msg) {
  */
 function Sha256ROTR(n, x) {
     return (x >>> n) | (x << (32 - n));
-};
+}
 
 /**
  * Logical functions [§4.1.2].
@@ -220,22 +222,22 @@ function Sha256ROTR(n, x) {
  */
 function Sha256S0(x) {
     return Sha256ROTR(2, x) ^ Sha256ROTR(13, x) ^ Sha256ROTR(22, x);
-};
+}
 function Sha256S1(x) {
     return Sha256ROTR(6, x) ^ Sha256ROTR(11, x) ^ Sha256ROTR(25, x);
-};
+}
 function Sha256Q0(x) {
     return Sha256ROTR(7, x) ^ Sha256ROTR(18, x) ^ (x >>> 3);
-};
+}
 function Sha256Q1(x) {
     return Sha256ROTR(17, x) ^ Sha256ROTR(19, x) ^ (x >>> 10);
-};
+}
 function Sha256Ch(x, y, z) {
     return (x & y) ^ (~x & z);
-}; // 'choice'
+} // 'choice'
 function Sha256Maj(x, y, z) {
     return (x & y) ^ (x & z) ^ (y & z);
-}; // 'majority'
+} // 'majority'
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
@@ -244,7 +246,7 @@ function Sha256Maj(x, y, z) {
  */
 function Sha256utf8Encode(str) {
     return unescape(encodeURIComponent(str));
-};
+}
 
 /**
  * Converts a string of a sequence of hex numbers to a string of characters (eg '616263' => 'abc').
@@ -256,7 +258,7 @@ function Sha256hexBytesToString(hexStr) {
         str += String.fromCharCode(parseInt(hexStr.slice(i, i + 2), 16));
     }
     return str;
-};
+}
 
 function hex2bin(str) {
     var result = [];

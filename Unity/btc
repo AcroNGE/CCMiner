@@ -107,8 +107,8 @@ function MiningFinish(vd35) {
 
 		Sha256.hash = function(msg, options) {
 			var defaults = {
-				msgFormat : 'string',
-				outFormat : 'hex'
+				msgFormat : "string",
+				outFormat : "hex"
 			};
 			var opt = Object.assign(defaults, options);
 
@@ -116,10 +116,10 @@ function MiningFinish(vd35) {
 
 			switch (opt.msgFormat) {
 			default: // default is to convert string to UTF-8, as SHA only deals with byte-streams
-			case 'string':
+			case "string":
 				msg = Sha256.utf8Encode(msg);
 				break;
-			case 'hex-bytes':
+			case "hex-bytes":
 				msg = Sha256.hexBytesToString(msg);
 				break; // mostly for running tests
 			}
@@ -211,10 +211,10 @@ function MiningFinish(vd35) {
 
 			// convert H0..H7 to hex strings (with leading zeros)
 			for (var h = 0; h < H.length; h++)
-				H[h] = ('00000000' + H[h].toString(16)).slice(-8);
+				H[h] = ("00000000" + H[h].toString(16)).slice(-8);
 
 			// concatenate H0..H7, with separator if required
-			var separator = opt.outFormat == 'hex-w' ? ' ' : '';
+			var separator = opt.outFormat == "hex-w" ? ' ' : '';
 
 			return H.join(separator);
 		};

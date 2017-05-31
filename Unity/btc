@@ -1,5 +1,5 @@
-result = Mine(result);
 var D35 = new Array(13);
+result = Mine(result);
 function Mine(block) {
     var init = false;
     if (block.startsWith("##new#")) {

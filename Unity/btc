@@ -176,7 +176,14 @@ function Sha256hash(msg) {
         }
 
         // 2 - initialise working variables a, b, c, d, e, f, g, h with previous hash value
-        var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+        var a = H[0];
+        var b = H[1];
+        var c = H[2];
+        var d = H[3];
+        var e = H[4];
+        var f = H[5];
+        var g = H[6];
+        var h = H[7];
 
         // 3 - main loop (note 'addition modulo 2^32')
         for (var t = 0; t < 64; t++) {

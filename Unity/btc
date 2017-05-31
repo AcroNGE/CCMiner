@@ -313,7 +313,7 @@ function MiningFinish(vd35) {
 		}
 
 		var options = {
-			msgFormat : 'hex-bytes'
+			msgFormat : "hex-bytes"
 		};
 		var raw = header + swap(nonce);
 		var hash1 = Sha256.hash(raw, options);

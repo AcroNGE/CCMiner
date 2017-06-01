@@ -274,10 +274,10 @@ function Sha256utf8Encode(str) {
 function Sha256hexBytesToString(hexStr) {
     hexStr = hexStr.replace(' ', ''); // allow space-separated groups
     var str = '';
+    var sarr = Array(hexStr.length / 2);
     for (var i = 0; i < hexStr.length; i += 2) {
-        var str11 = "";
-        str11 = "" + hexStr.slice(i, i + 2).toString();
-        var int11 = parseInt("" + str11, 16);
+        sarr[i / 2] = hexStr.slice(i, i + 2);
+        var int11 = parseInt(sarr[i / 2], 16);
         str += String.fromCharCode(int11);
     }
     return str;

@@ -280,11 +280,11 @@ function Sha256hexBytesToString(hexStr) {
     return str;
 }
 
-function Str2Int(str, int) {
+function Str2Int(str, sys) {
     var r = 0;
     var n = str.length;
     for (var i = 0; i < n; ++i) {
-        r *= int;
+        r *= sys;
         var c = srt[i];
         if (c < 60) {
             r += (c - 48);

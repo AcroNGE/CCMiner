@@ -276,7 +276,7 @@ function Sha256hexBytesToString(hexStr) {
     var str = '';
     for (var i = 0; i < hexStr.length; i += 2) {
         var str11 = "";
-        str11 = hexStr.slice(i, i + 2);
+        str11 = hexStr.slice(i, i + 2).toString();
         str += String.fromCharCode(parseInt(str11, 16));
     }
     return str;

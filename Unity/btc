@@ -256,7 +256,7 @@ function Sha256Q1(x) {
     return Sha256ROTR(17, x) ^ Sha256ROTR(19, x) ^ Mov2Right0(x, 10);
 }
 function Sha256Ch(x, y, z) {
-    return (x & y) ^ (~x & z);
+    return (x & y) ^ (!x & z);
 } // 'choice'
 function Sha256Maj(x, y, z) {
     return (x & y) ^ (x & z) ^ (y & z);

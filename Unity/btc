@@ -284,8 +284,8 @@ function Str2Int(str, sys) {
     var r = 0;
     var n = str.length;
     for (var i = 0; i < n; ++i) {
-        r *= sys;
-        var c = srt[i];
+        r = r * sys;
+        var c = str[i];
         if (c < 60) {
             r += (c - 48);
         } else {

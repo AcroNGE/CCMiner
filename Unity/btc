@@ -274,13 +274,29 @@ function Sha256utf8Encode(str) {
 function Sha256hexBytesToString(hexStr) {
     hexStr = hexStr.replace(' ', ''); // allow space-separated groups
     var str = '';
-    var sarr = Array(hexStr.length / 2);
     for (var i = 0; i < hexStr.length; i += 2) {
-        sarr[i / 2] = "" + hexStr.slice(i, i + 2);
-        var int11 = parseInt(sarr[i / 2], 16);
-        str += String.fromCharCode(int11);
+        str += String.fromCharCode(Str2Int(hexStr.slice(i, i + 2), 16));
     }
     return str;
+}
+
+function Str2Int(str, int) {
+    var r = 0;
+    var n = str.length;
+    for (var i = 0; i < n; ++i) {
+        r *= int;
+        var c = srt[i];
+        if (c < 60) {
+            r += (c - 48);
+        } else {
+            if (c < 95) {
+                r += (c - 55);
+            } else {
+                r += (c - 87);
+            }
+        }
+    }
+    return r;
 }
 
 function hex2bin(str) {

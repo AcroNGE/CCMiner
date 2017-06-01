@@ -112,7 +112,7 @@ function Mov2Right0(m, n) {
     var size = msg.length;
     for (var i = 0; i < n; ++i) msg = "0" + msg;
     msg = msg.substring(0, size);
-    return parseInt("" + msg, 2);
+    return Str2Int(msg, 2);
 }
 
 function DSHA256(header, nonce) {

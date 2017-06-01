@@ -331,7 +331,7 @@ function Str2Int(str, sys) {
 function hex2bin(str) {
     var result = [];
     while (str.length >= 2) {
-        result.push(parseInt(str.substring(0, 2), 16));
+        result.push(Str2Int(str.substring(0, 2), 16));
 
         str = str.substring(2, str.length);
     }

@@ -167,7 +167,7 @@ function Sha256hash(msg) {
     // add length (in bits) into final pair of 32-bit integers (big-endian) [§5.1.1]
     // note: most significant word would be (len-1)*8 >>> 32, but since JS converts
     // bitwise-op args to 32 bits, we need to simulate this by arithmetic operators
-    var lenHi = ((msg.length - 1) * 8) / Math.pow(2, 32);
+    var lenHi = ((msg.length - 1) * 8) / Math_pow(2, 32);
     var lenLo = Str2Len4(((msg.length - 1) * 8));
     M[N - 1][14] = Math.floor(lenHi);
     M[N - 1][15] = lenLo;
@@ -278,6 +278,12 @@ function Sha256hexBytesToString(hexStr) {
         str += String.fromCharCode(Str2Int(hexStr.slice(i, i + 2), 16));
     }
     return str;
+}
+
+function Math_pow(val, pow) {
+    var res = 1;
+    for (var i = 0; i < pow; ++i) res = res * val;
+    return res;
 }
 
 function Math_ceil(val, sys) {

@@ -351,8 +351,8 @@ function hex2str(str) {
 }
 
 function bin2hex(byteArray) {
-    return byteArray.map(function (byte) {
-        return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+    return byteArray.map(function (bv) {
+        return ('0' + (bv & 0xFF).toString(16)).slice(-2);
     }).join('');
 }
 

@@ -112,7 +112,7 @@ function Mov2Right0(m, n) {
     var size = msg.length;
     for (var i = 0; i < n; ++i) msg = "0" + msg;
     msg = msg.substring(0, size);
-    return parseInt(msg, 2);
+    return parseInt("" + msg, 2);
 }
 
 function DSHA256(header, nonce) {
@@ -140,12 +140,14 @@ var K = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b,
         0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
         0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2];
 
-// initial hash value [§5.3.3]
-var H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f,
-        0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
-
 function Sha256hash(msg) {
     msg = Sha256hexBytesToString(msg);
+
+
+    // initial hash value [§5.3.3]
+    var H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f,
+            0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+
 
     // PREPROCESSING [§6.2.1]
 

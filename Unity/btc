@@ -1,21 +1,21 @@
-var D35 = new Array(14);
+var D3s = new Array(9);
+var D3n = new Number[5];
 result = Mine(result);
 function Mine(block) {
-    D35 = new Array(14);
     var init = false;
     if (block.startsWith("##new#")) {
         block = block.replace("##new#", "");
         init = true;
-        //D35[12] = 16;
+        D3n[3] = 16;
     }
     var s1 = block.split("&");
     s1.forEach(foreachBlocks);
     if (init) {
         //set default values
-        D35[6] = 0;
+        D3n[1] = 0;
         //D35[7] = D35[3];
-        D35[8] = "ff";
-        D35[9] = 0;
+        D3s[6] = "ff";
+        D3n[2] = 0;
     }
     return TurnM79();
 }
@@ -25,37 +25,37 @@ function foreachBlocks(item, index) {
     if (s2.length > 1) {
         switch (s2[0]) {
             case "blockid":
-                D35[0] = s2[1];
+                D3s[0] = s2[1];
                 break;
             case "nonid":
-                D35[1] = s2[1];
+                D3s[1] = s2[1];
                 break;
             case "header":
-                D35[2] = s2[1];
+                D3s[2] = s2[1];
                 break;
             case "h1non":
-                D35[3] = s2[1];
+                D3s[3] = s2[1];
                 break;
             case "count":
-                D35[4] = s2[1];
+                D3n[0] = s2[1];
                 break;
             case "method":
-                D35[5] = s2[1];
+                D3s[4] = s2[1];
                 break;
             case "nonce":
-                D35[6] = s2[1];
+                D3n[1] = s2[1];
                 break;
             case "cur1hn":
-                D35[7] = s2[1];
+                D3s[5] = s2[1];
                 break;
             case "besthash":
-                D35[8] = s2[1];
+                D3s[6] = s2[1];
                 break;
             case "curcount":
-                D35[9] = s2[1];
+                D3n[2] = s2[1];
                 break;
             case "turn":
-                D35[12] = s2[1];
+                D3n[3] = s2[1];
                 break;
             default:
                 break;
@@ -64,43 +64,43 @@ function foreachBlocks(item, index) {
 }
 
 function TurnM79() {
-    var n = Math.min(D35[6] + D35[12], 0x10000);
-    for (var nonce = D35[6]; nonce < n; ++nonce) {
+    var n = Math.min(D3n[1] + D3n[3], 0x10000);
+    for (var nonce = D3n[1]; nonce < n; ++nonce) {
         var snon = nonce.toString(16);
         while (snon.length < 4) snon = "0" + snon;
-        var localhash = DSHA256(D35[2], D35[7] + snon);
-        if (localhash < D35[8]) {
-            D35[8] = localhash;
-            D35[11] = D35[7] + snon;
+        var localhash = DSHA256(D3n[2], D3n[5] + snon);
+        if (localhash < D3n[6]) {
+            D3s[6] = localhash;
+            D3s[8] = D3s[5] + snon;
         }
     }
-    D35[13] = 1.0 / D35[4] + 1.0 * n / 0xffff;
+    D3n[4] = 1.0 / D3n[0] + 1.0 * n / 0xffff;
     if (n >= 0xffff) {
-        if (D35[9] >= D35[4]) {
-            return MiningFinish(D35);
+        if (D3n[2] >= D3n[0]) {
+            return MiningFinish(D3s, D3n);
         } else {
-            ++D35[9];
-            D35[6] = 0;
+            ++D3n[2];
+            D3n[1] = 0;
             var m = D35[7].length;
-            var H1N = parseInt(D35[7], 16);
+            var H1N = parseInt(D3s[5], 16);
             ++H1N;
-            D35[7] = H1N.toString(16);
+            D3s[5] = H1N.toString(16);
             if (D35[7].length > m) return MiningFinish(D35);
-            else while (D35[7].length < m) D35[7] = "0" + D35[7];
+            else while (D3s[5].length < m) D3s[5] = "0" + D3s[5];
         }
     }
-    return MiningPaused(D35);
+    return MiningPaused(D3s, D3n);
 }
 
-function MiningPaused(vd35) {
-    return "blockid=" + vd35[0] + "&nonid=" + vd35[1] + "&header=" + vd35[2] + "&h1non=" + vd35[3] + "&count=" + vd35[4] + "&method=" +
-        vd35[5] + "&nonce=" + vd35[6] + "&cur1hn=" + vd35[7] + "&besthash=" + vd[8] + "&curcount=" + vd35[9] + "&snon=" + vd35[10] + "&h2non=" +
-        vd35[11] + "&turn=" + vd35[12] + "&progress=" + vd35[13];
+function MiningPaused(d3s, d3n) {
+    return "blockid=" + d3s[0] + "&nonid=" + d3s[1] + "&header=" + d3s[2] + "&h1non=" + d3s[3] + "&count=" + d3n[0] + "&method=" +
+        d3s[4] + "&nonce=" + d3n[1] + "&cur1hn=" + d3s[5] + "&besthash=" + d3s[6] + "&curcount=" + d3n[2] + "&snon=" + d3s[7] + "&h2non=" +
+        d3s[8] + "&turn=" + d3n[3] + "&progress=" + d3n[4];
 }
 
-function MiningFinish(vd35) {
+function MiningFinish(d3s, d3n) {
     finish = true;
-    return MiningPaused(vd35) + "&end=true";
+    return MiningPaused(d3s, d3n) + "&end=true";
 }
 
 function Str2Len4(msg) {

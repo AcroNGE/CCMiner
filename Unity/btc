@@ -269,7 +269,8 @@ function Sha256Maj(x, y, z) {
  * Encodes multi-byte string to utf8 - monsur.hossa.in/2012/07/20/utf-8-in-javascript.html
  */
 function Sha256utf8Encode(str) {
-    return decodeURI(encodeURIComponent(str));
+    //return decodeURI(encodeURIComponent(str));
+    return str;
 }
 
 /**

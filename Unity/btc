@@ -275,7 +275,9 @@ function Sha256hexBytesToString(hexStr) {
     hexStr = hexStr.replace(' ', ''); // allow space-separated groups
     var str = '';
     for (var i = 0; i < hexStr.length; i += 2) {
-        str += String.fromCharCode(parseInt("" + hexStr.slice(i, i + 2), 16));
+        var str11 = "";
+        str11 = hexStr.slice(i, i + 2);
+        str += String.fromCharCode(parseInt(str11, 16));
     }
     return str;
 }
@@ -309,7 +311,7 @@ function bin2hex(byteArray) {
 }
 
 function swap(str) {
-    var result = '';
+    var result = "";
     while (str.length >= 2) {
         result = str.substring(0, 2) + result;
         str = str.substring(2, str.length);

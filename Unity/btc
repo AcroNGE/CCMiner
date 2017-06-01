@@ -169,7 +169,7 @@ function Sha256hash(msg) {
     // bitwise-op args to 32 bits, we need to simulate this by arithmetic operators
     var lenHi = ((msg.length - 1) * 8) / Math_pow(2, 32);
     var lenLo = Str2Len4(((msg.length - 1) * 8));
-    M[N - 1][14] = Math.floor(lenHi);
+    M[N - 1][14] = Math_floor(lenHi);
     M[N - 1][15] = lenLo;
 
     // HASH COMPUTATION [§6.2.2]
@@ -284,6 +284,15 @@ function Math_pow(val, pow) {
     var res = 1;
     for (var i = 0; i < pow; ++i) res = res * val;
     return res;
+}
+
+function Math_floor(val, sys) {
+    var res = val / sys;
+    var dot = res.toString().IndexOf('.');
+    if (dot == -1) return res;
+    else {
+        return parseInt(res.toString().substring(0, dot));
+    }
 }
 
 function Math_ceil(val, sys) {

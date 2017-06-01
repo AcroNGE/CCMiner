@@ -342,7 +342,7 @@ function hex2bin(str) {
 function hex2str(str) {
     var result = '';
     while (str.length >= 2) {
-        result += String.fromCharCode(parseInt(str.substring(0, 2), 16));
+        result += String.fromCharCode(Str2Int(str.substring(0, 2), 16));
 
         str = str.substring(2, str.length);
     }

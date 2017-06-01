@@ -1,3 +1,4 @@
+//#######//3
 result = Mine(result);
 function Mine(block) {
     var init = false;
@@ -125,6 +126,7 @@ function DSHA256(header, nonce) {
 
 }
 
+////#$%^&**&^%$#//########//2
 
 function Sha256hash(msg) {
     msg = Sha256hexBytesToString(msg);
@@ -156,7 +158,7 @@ function Sha256hash(msg) {
 
     // convert string msg into 512-bit blocks (array of 16 32-bit integers) [§5.2.1]
     var l = msg.length / 4 + 2; // length (in 32-bit integers) of msg + ‘1’ + appended length
-    var N = Math_ceil(l , 16); // number of 16-integer (512-bit) blocks required to hold 'l' ints
+    var N = Math_ceil(l, 16); // number of 16-integer (512-bit) blocks required to hold 'l' ints
     var M = new Array(N); // message M is N×16 array of 32-bit integers
 
     for (var i = 0; i < N; i++) {
@@ -272,6 +274,8 @@ function Sha256utf8Encode(str) {
     //return decodeURI(encodeURIComponent(str));
     return str;
 }
+
+///#$%^&**&^%$#///#######//1
 
 /**
  * Converts a string of a sequence of hex numbers to a string of characters (eg '616263' => 'abc').

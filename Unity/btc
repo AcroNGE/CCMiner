@@ -81,10 +81,10 @@ function TurnM79() {
             D3n[2] = D3n[2] + 1;
             D3n[1] = 0;
             var m = D3n[5].length;
-            var H1N = parseInt(D3s[5], 16);
+            var H1N = Str2Int(D3s[5], 16);
             ++H1N;
             D3s[5] = H1N.toString(16);
-            if (D35[7].length > m) return MiningFinish(D35);
+            if (D3n[5].length > m) return MiningFinish(D3s, D3n);
             else while (D3s[5].length < m) D3s[5] = "0" + D3s[5];
         }
     }

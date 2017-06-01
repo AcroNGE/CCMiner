@@ -104,6 +104,7 @@ function MiningFinish(d3s, d3n) {
 
 function Str2Len4(msg) {
     while ((msg.length % 4) > 0) msg = "0" + msg;
+    return msg;
 }
 
 function Mov2Right0(m, n) {

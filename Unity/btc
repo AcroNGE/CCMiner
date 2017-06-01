@@ -152,7 +152,7 @@ function Sha256hash(msg) {
 
     // convert string msg into 512-bit blocks (array of 16 32-bit integers) [§5.2.1]
     var l = msg.length / 4 + 2; // length (in 32-bit integers) of msg + ‘1’ + appended length
-    var N = Math.ceil(l / 16); // number of 16-integer (512-bit) blocks required to hold 'l' ints
+    var N = Math_ceil(l , 16); // number of 16-integer (512-bit) blocks required to hold 'l' ints
     var M = new Array(N); // message M is N×16 array of 32-bit integers
 
     for (var i = 0; i < N; i++) {
@@ -278,6 +278,15 @@ function Sha256hexBytesToString(hexStr) {
         str += String.fromCharCode(Str2Int(hexStr.slice(i, i + 2), 16));
     }
     return str;
+}
+
+function Math_ceil(val, sys) {
+    var res = val / sys;
+    var dot = res.toString().IndexOf('.');
+    if (dot == -1) return res;
+    else {
+        return parseInt(res.toString().substring(0, dot)) + 1;
+    }
 }
 
 function Str2Int(str, sys) {

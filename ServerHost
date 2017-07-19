@@ -1,4 +1,5 @@
 #################Server Host Info##################;
+AcroNGE_Fields=ServerHost,hostAddress,blockmanager,method,pathAlg,frameAddress;
 ServerHost=http://minermanager-theod.rhcloud.com;
 hostAddress=http://minermanager-theod.rhcloud.com/manager;
 blockmanager=null;

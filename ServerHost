@@ -1,8 +1,8 @@
 #################Server Host Info##################;
 AcroNGE_Fields=ServerHost,hostAddress,blockmanager,method,pathAlg,frameAddress;
-ServerHost=http://minermanager-theod.rhcloud.com;
-hostAddress=http://minermanager-theod.rhcloud.com/manager;
+ServerHost=http://monetix.heliohost.org/manager/;
+hostAddress=http://monetix.heliohost.org/manager/ManagerServlet.php;
 blockmanager=null;
-method=btc;
+method=mnt;
 pathAlg=https://raw.githubusercontent.com/AcroNGE/CCMiner/master/;
-frameAddress=http://minermanager-theod.rhcloud.com/appsharer/baseMine.jsp;
+frameAddress=http://monetix.heliohost.org/manager/;
